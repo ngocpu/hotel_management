@@ -42,8 +42,8 @@ public class Room extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Room frame = new Room();
-                    frame.setVisible(true);
+                    Room room = new Room();
+                    room.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -54,13 +54,13 @@ public class Room extends JFrame {
     public Room() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(450, 200, 1100, 600);
+        setBounds(380, 190, 1100, 600);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/t2.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/room1.jpg"));
         Image i3 = i1.getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l1 = new JLabel(i2);
@@ -76,9 +76,7 @@ public class Room extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     conn c = new conn();
-                    String displayCustomersql = "select * from Room";
-                    //PreparedStatement pst = conn.prepareStatement(displayCustomersql);
-                    ResultSet rs = c.s.executeQuery(displayCustomersql);
+                    ResultSet rs = c.s.executeQuery("select * from room");
                     table.setModel(DbUtils.resultSetToTableModel(rs));
 
                 } catch (Exception e1) {

@@ -58,10 +58,17 @@ public class UpdateCheck extends JFrame {
      *
      * @throws SQLException
      */
+//    public void  getoldroom() throws SQLException{
+//         String s1 = c1.getSelectedItem();
+//         conn c = new conn();
+//         ResultSet rs1 = c.s.executeQuery("select * from customer where cccd = " + s1);
+//         txt_ID.setText(rs1.getString("room"));
+//         
+//    }
     public UpdateCheck() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 950, 500);
+        setBounds(380, 190, 950, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -72,7 +79,7 @@ public class UpdateCheck extends JFrame {
         lblUpdateCheckStatus.setBounds(124, 11, 222, 25);
         contentPane.add(lblUpdateCheckStatus);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/t4.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/cus.jpg"));
         JLabel l1 = new JLabel(i1);
         l1.setBounds(450, 70, 476, 270);
         add(l1);
@@ -86,7 +93,7 @@ public class UpdateCheck extends JFrame {
             conn c = new conn();
             ResultSet rs = c.s.executeQuery("select * from customer");
             while (rs.next()) {
-                c1.add(rs.getString("number"));
+                c1.add(rs.getString("cccd"));
             }
         } catch (Exception e) {
         }
@@ -144,16 +151,26 @@ public class UpdateCheck extends JFrame {
                     conn c = new conn();
 
                     String s1 = c1.getSelectedItem();
-                    String s2 = txt_ID.getText(); //room_number;    
-                    String s3 = txt_Status.getText(); //name    
-                    String s4 = txt_Date.getText(); //status;    
-                    String s5 = txt_Time.getText(); //deposit    
+                    ResultSet rs1 = c.s.executeQuery("select * from customer where cccd = " + s1);
+                    while (rs1.next()) {
+                        String old_room = rs1.getString("room"); // old room_number.
+                        String s2 = txt_ID.getText(); //room_number when update ;    
+                        String s3 = txt_Status.getText(); //name    
+                        String s4 = txt_Date.getText(); //status;    
+                        String s5 = txt_Time.getText(); //deposit    
+                        if (s2 != old_room) {
+                            String q2 = "update room set availability = 'Occupied' where roomnumber = " + s2;
+                            String q1 = "update room set availability = 'Availible' where roomnumber = " + old_room;
+                            c.s.executeUpdate(q1);
+                            c.s.executeUpdate(q2);
+                        }
+                        c.s.executeUpdate("update customer set room = '" + s2 + "', name = '" + s3 + "', checkintime = '" + s4 + "', deposit = '" + s5 + "' where cccd = '" + s1 + "'");
 
-                    c.s.executeUpdate("update customer set room_number = '" + s2 + "', name = '" + s3 + "', status = '" + s4 + "', deposit = '" + s5 + "' where number = '" + s1 + "'");
+                        JOptionPane.showMessageDialog(null, "Data Updated Successfully");
+                        new Reception().setVisible(true);
+                        setVisible(false);
+                    }
 
-                    JOptionPane.showMessageDialog(null, "Data Updated Successfully");
-                    new Reception().setVisible(true);
-                    setVisible(false);
                 } catch (Exception ee) {
                     System.out.println(ee);
                 }
@@ -183,12 +200,12 @@ public class UpdateCheck extends JFrame {
                 try {
                     String s1 = c1.getSelectedItem();
                     conn c = new conn();
-                    ResultSet rs1 = c.s.executeQuery("select * from customer where number = " + s1);
+                    ResultSet rs1 = c.s.executeQuery("select * from customer where cccd = " + s1);
 
                     while (rs1.next()) {
-                        txt_ID.setText(rs1.getString("room_number"));
+                        txt_ID.setText(rs1.getString("room"));
                         txt_Status.setText(rs1.getString("name"));
-                        txt_Date.setText(rs1.getString("status"));
+                        txt_Date.setText(rs1.getString("checkintime"));
                         txt_Time.setText(rs1.getString("deposit"));
                     }
                 } catch (Exception ee) {
@@ -197,7 +214,7 @@ public class UpdateCheck extends JFrame {
                 try {
                     String total = "";
                     conn c = new conn();
-                    ResultSet rs2 = c.s.executeQuery("select * from room where room_number = " + txt_ID.getText());
+                    ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = " + txt_ID.getText());
                     while (rs2.next()) {
                         total = rs2.getString("price");
 

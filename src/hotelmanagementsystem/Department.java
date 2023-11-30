@@ -58,7 +58,7 @@ public class Department extends JFrame {
     public Department() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(600, 200, 700, 500);
+        setBounds(380, 190, 700, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -74,7 +74,7 @@ public class Department extends JFrame {
                 try {
                     conn c = new conn();
 
-                    String displayCustomersql = "select * from Department";
+                    String displayCustomersql = "select * from department";
                     ResultSet rs = c.s.executeQuery(displayCustomersql);
                     table.setModel(DbUtils.resultSetToTableModel(rs));
 

@@ -28,12 +28,12 @@ public class AddDrivers extends JFrame implements ActionListener {
     }
 
     public AddDrivers() {
-        setBounds(450, 200, 1000, 500);
+        setBounds(380, 190, 1000, 500);
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/t3.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/drive.jpg"));
         Image i3 = i1.getImage().getScaledInstance(500, 300, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l15 = new JLabel(i2);

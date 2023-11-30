@@ -24,12 +24,12 @@ public class Reception extends JFrame {
 
     public Reception() {
 
-        setBounds(530, 200, 850, 570);
+        setBounds(380, 190, 850, 570);
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/t3.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/res.jpg"));
         Image i3 = i1.getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l1 = new JLabel(i2);
@@ -53,24 +53,23 @@ public class Reception extends JFrame {
         btnNewCustomerForm.setForeground(Color.WHITE);
         contentPane.add(btnNewCustomerForm);
 
-        JButton btnNewButton = new JButton("Room");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
+        JButton btnNewRoomButton = new JButton("Room");
+        btnNewRoomButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 try {
                     Room room = new Room();
                     room.setVisible(true);
                     setVisible(false);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
-
             }
         });
-        btnNewButton.setBounds(10, 70, 200, 30);
-        btnNewButton.setBackground(Color.BLACK);
-        btnNewButton.setForeground(Color.WHITE);
+        btnNewRoomButton.setBounds(10, 70, 200, 30);
+        btnNewRoomButton.setBackground(Color.BLACK);
+        btnNewRoomButton.setForeground(Color.WHITE);
 
-        contentPane.add(btnNewButton);
+        contentPane.add(btnNewRoomButton);
 
         JButton btnNewButton_1 = new JButton("Department");
         btnNewButton_1.addActionListener(new ActionListener() {

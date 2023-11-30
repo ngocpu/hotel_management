@@ -61,7 +61,7 @@ public class SearchRoom extends JFrame {
     public SearchRoom() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(530, 200, 700, 500);
+        setBounds(380, 190, 700, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -106,8 +106,8 @@ public class SearchRoom extends JFrame {
         JButton btnSearch = new JButton("Search");
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String SQL = "select * from Room where bed_type = '" + c1.getSelectedItem() + "'";
-                String SQL2 = "select * from Room where availability = 'Available' AND bed_type = '" + c1.getSelectedItem() + "'";
+                String SQL = "select * from room where bed_type = '" + c1.getSelectedItem() + "'";
+                String SQL2 = "select * from room where availability = 'Available' AND bed_type = '" + c1.getSelectedItem() + "'";
                 try {
                     conn c = new conn();
                     rs = c.s.executeQuery(SQL);

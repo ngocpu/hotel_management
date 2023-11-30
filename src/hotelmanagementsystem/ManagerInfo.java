@@ -60,7 +60,7 @@ public class ManagerInfo extends JFrame {
     public ManagerInfo() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(430, 200, 1000, 600);
+        setBounds(380, 190, 1000, 600);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -75,7 +75,7 @@ public class ManagerInfo extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     conn c = new conn();
-                    String displayCustomersql = "select * from Employee where job = 'Manager'";
+                    String displayCustomersql = "select * from employee where job = 'Manager'";
                     ResultSet rs = c.s.executeQuery(displayCustomersql);
                     table.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (Exception e1) {
@@ -125,7 +125,7 @@ public class ManagerInfo extends JFrame {
         l2.setBounds(656, 11, 86, 14);
         contentPane.add(l2);
 
-        JLabel l3 = new JLabel("Aadhar");
+        JLabel l3 = new JLabel("Cccd");
         l3.setBounds(786, 11, 86, 14);
         contentPane.add(l3);
 

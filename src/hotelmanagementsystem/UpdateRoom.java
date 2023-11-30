@@ -59,7 +59,7 @@ public class UpdateRoom extends JFrame {
     public UpdateRoom() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(530, 200, 1000, 450);
+        setBounds(380, 190, 1000, 450);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -86,7 +86,7 @@ public class UpdateRoom extends JFrame {
             conn c = new conn();
             ResultSet rs = c.s.executeQuery("select * from customer");
             while (rs.next()) {
-                c1.add(rs.getString("number"));
+                c1.add(rs.getString("cccd"));
             }
         } catch (Exception e) {
         }
@@ -122,19 +122,19 @@ public class UpdateRoom extends JFrame {
                 try {
                     String s1 = c1.getSelectedItem();
                     conn c = new conn();
-                    ResultSet rs1 = c.s.executeQuery("select * from customer where number = " + s1);
+                    ResultSet rs1 = c.s.executeQuery("select * from customer where cccd = " + s1);
 
                     while (rs1.next()) {
-                        txt_Room.setText(rs1.getString("room_number"));
+                        txt_Room.setText(rs1.getString("room"));
                     }
                 } catch (Exception ee) {
                 }
                 try {
                     conn c = new conn();
-                    ResultSet rs2 = c.s.executeQuery("select * from room where room_number = " + txt_Room.getText());
+                    ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = " + txt_Room.getText());
                     while (rs2.next()) {
                         txt_Ava.setText(rs2.getString("availability"));
-                        txt_Status.setText(rs2.getString("clean_status"));
+                        txt_Status.setText(rs2.getString("cleaning_status"));
                     }
                 } catch (Exception ee) {
                 }
@@ -151,7 +151,7 @@ public class UpdateRoom extends JFrame {
 
                 try {
                     conn c = new conn();
-                    String str = "update room set clean_status = '" + txt_Status.getText() + "' where room_number = " + txt_Room.getText();
+                    String str = "update room set cleaning_status = '" + txt_Status.getText() + "' where roomnumber = " + txt_Room.getText();
                     c.s.executeUpdate(str);
                     JOptionPane.showMessageDialog(null, "Update Sucessful");
 

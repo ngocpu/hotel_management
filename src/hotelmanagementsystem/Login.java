@@ -23,8 +23,9 @@ public class Login extends JFrame implements ActionListener {
     Login() {
 
         super("Login");
-
         setLayout(null);
+        setSize(600, 300);
+        setLocationRelativeTo(null);
 
         l1 = new JLabel("Username");
         l1.setBounds(40, 20, 100, 30);
@@ -69,8 +70,8 @@ public class Login extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.WHITE);
 
         setVisible(true);
-        setSize(600, 300);
-        setLocation(600, 350);
+       
+        
 
     }
 

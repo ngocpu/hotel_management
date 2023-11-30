@@ -58,7 +58,7 @@ public class PickUp extends JFrame {
     public PickUp() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(530, 200, 800, 600);
+         setBounds(380, 190, 850, 570);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -78,7 +78,7 @@ public class PickUp extends JFrame {
             conn c = new conn();
             ResultSet rs = c.s.executeQuery("select * from driver");
             while (rs.next()) {
-                c1.add(rs.getString("brand"));
+                c1.add(rs.getString("branch"));
             }
         } catch (Exception e) {
         }
@@ -92,7 +92,7 @@ public class PickUp extends JFrame {
         JButton btnRegister = new JButton("Display");
         btnRegister.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                String SQL = "select * from driver where brand = '" + c1.getSelectedItem() + "'";
+                String SQL = "select * from driver where branch = '" + c1.getSelectedItem() + "'";
                 try {
 
                     conn c = new conn();

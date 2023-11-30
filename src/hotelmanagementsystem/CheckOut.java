@@ -53,13 +53,13 @@ public class CheckOut extends JFrame {
     public CheckOut() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(530, 200, 800, 294);
+        setBounds(380, 190, 800, 294);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("hotel/management/system/icons/sixth.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/cus.jpg"));
         Image i3 = i1.getImage().getScaledInstance(400, 225, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l1 = new JLabel(i2);
@@ -71,7 +71,7 @@ public class CheckOut extends JFrame {
         lblCheckOut.setBounds(70, 11, 140, 35);
         contentPane.add(lblCheckOut);
 
-        JLabel lblName = new JLabel("Number :");
+        JLabel lblName = new JLabel("CCCD :");
         lblName.setBounds(20, 85, 80, 14);
         contentPane.add(lblName);
 
@@ -80,14 +80,14 @@ public class CheckOut extends JFrame {
             conn c = new conn();
             ResultSet rs = c.s.executeQuery("select * from customer");
             while (rs.next()) {
-                c1.add(rs.getString("number"));
+                c1.add(rs.getString("cccd"));
             }
         } catch (Exception e) {
         }
         c1.setBounds(130, 82, 150, 20);
         contentPane.add(c1);
 
-        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("hotel/management/system/icons/tick.png"));
+        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("images/cus.jpg"));
         Image i5 = i4.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
         JButton l2 = new JButton(i6);
@@ -101,12 +101,12 @@ public class CheckOut extends JFrame {
                 try {
 
                     conn c = new conn();
-                    String number = c1.getSelectedItem();
-                    ResultSet rs = c.s.executeQuery("select * from customer where number = " + number);
+                    String cccd = c1.getSelectedItem();
+                    ResultSet rs = c.s.executeQuery("select * from customer where cccd = " + cccd);
 
                     if (rs.next()) {
                         System.out.println("clicked");
-                        t1.setText(rs.getString("room_number"));
+                        t1.setText(rs.getString("roomnumber"));
                     }
                 } catch (Exception e) {
                 }
@@ -126,8 +126,8 @@ public class CheckOut extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String id = c1.getSelectedItem();
                 String s1 = t1.getText();
-                String deleteSQL = "Delete from customer where number = " + id;
-                String q2 = "update room set availability = 'Available' where room_number = " + s1;
+                String deleteSQL = "Delete from customer where cccd = " + id;
+                String q2 = "update room set availability = 'Available' where roomnumber = " + s1;
 
                 conn c = new conn();
 

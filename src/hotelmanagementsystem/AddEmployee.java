@@ -26,6 +26,7 @@ public class AddEmployee extends JFrame { //Third Frame
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(778, 486);
         getContentPane().setLayout(null);
+        getContentPane().setLocation(380, 190);
 
         JLabel Passportno = new JLabel("NAME");
         Passportno.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -95,7 +96,7 @@ public class AddEmployee extends JFrame { //Third Frame
         textField_4.setBounds(200, 270, 150, 27);
         add(textField_4);
 
-        JLabel Phno = new JLabel("AADHAR");
+        JLabel Phno = new JLabel("CCCD");
         Phno.setFont(new Font("Tahoma", Font.PLAIN, 17));
         Phno.setBounds(60, 320, 150, 27);
         add(Phno);
@@ -121,7 +122,7 @@ public class AddEmployee extends JFrame { //Third Frame
         AddPassengers.setBounds(450, 24, 442, 35);
         add(AddPassengers);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/t3.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/emp.jpg"));
         Image i3 = i1.getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel image = new JLabel(i2);
@@ -134,7 +135,7 @@ public class AddEmployee extends JFrame { //Third Frame
                 String age = textField_1.getText();
                 String salary = textField_3.getText();
                 String phone = textField_4.getText();
-                String aadhar = textField_5.getText();
+                String cccd = textField_5.getText();
                 String email = textField_6.getText();
 
                 String gender = null;
@@ -150,7 +151,7 @@ public class AddEmployee extends JFrame { //Third Frame
 
                 try {
                     conn c = new conn();
-                    String str = "INSERT INTO employee values( '" + name + "', '" + age + "', '" + gender + "','" + s6 + "', '" + salary + "', '" + phone + "','" + aadhar + "', '" + email + "')";
+                    String str = "INSERT INTO employee values( '" + name + "', '" + age + "', '" + gender + "','" + s6 + "', '" + salary + "', '" + phone + "','" + cccd + "', '" + email + "')";
 
                     c.s.executeUpdate(str);
                     JOptionPane.showMessageDialog(null, "Employee Added");
@@ -164,7 +165,7 @@ public class AddEmployee extends JFrame { //Third Frame
 
         setSize(900, 600);
         setVisible(true);
-        setLocation(530, 200);
+        setLocation(320, 190);
 
     }
 

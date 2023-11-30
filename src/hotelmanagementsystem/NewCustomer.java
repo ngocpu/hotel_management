@@ -49,12 +49,12 @@ public class NewCustomer extends JFrame {
 
     public NewCustomer() throws SQLException {
 
-        setBounds(530, 200, 850, 550);
+        setBounds(380, 190, 850, 570);
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/i2.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/cus.jpg"));
         Image i3 = i1.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l1 = new JLabel(i2);
@@ -66,15 +66,15 @@ public class NewCustomer extends JFrame {
         lblName.setBounds(118, 11, 260, 53);
         contentPane.add(lblName);
 
-        JLabel lblId = new JLabel("ID :");
+        JLabel lblId = new JLabel("Types Card :");
         lblId.setBounds(35, 76, 200, 14);
         contentPane.add(lblId);
 
-        comboBox = new JComboBox(new String[]{"Passport", "Aadhar Card", "Voter Id", "Driving license"});
+        comboBox = new JComboBox(new String[]{"Passport", "CCCD"});
         comboBox.setBounds(271, 73, 150, 20);
         contentPane.add(comboBox);
 
-        JLabel l2 = new JLabel("Number :");
+        JLabel l2 = new JLabel("CCCD :");
         l2.setBounds(35, 111, 200, 14);
         contentPane.add(l2);
 
@@ -121,7 +121,7 @@ public class NewCustomer extends JFrame {
             conn c = new conn();
             ResultSet rs = c.s.executeQuery("select * from room");
             while (rs.next()) {
-                c1.add(rs.getString("room_number"));
+                c1.add(rs.getString("roomnumber"));
             }
         } catch (Exception e) {
         }
@@ -176,7 +176,7 @@ public class NewCustomer extends JFrame {
                     String s8 = t6.getText();
 
                     String q1 = "insert into customer values('" + s1 + "','" + s2 + "','" + s3 + "','" + s4 + "','" + s5 + "','" + s6 + "','" + s7 + "','" + s8 + "')";
-                    String q2 = "update room set availability = 'Occupied' where room_number = " + s6;
+                    String q2 = "update room set availability = 'Occupied' where roomnumber = " + s6;
                     c.s.executeUpdate(q1);
                     c.s.executeUpdate(q2);
 

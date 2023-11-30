@@ -63,7 +63,7 @@ public class CustomerInfo extends JFrame {
     public CustomerInfo() throws SQLException {
         //conn = Javaconnect.getDBConnection();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(530, 200, 900, 600);
+        setBounds(380, 190, 900, 600);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -87,7 +87,7 @@ public class CustomerInfo extends JFrame {
                 try {
                     conn c = new conn();
 
-                    String displayCustomersql = "select * from Customer";
+                    String displayCustomersql = "select * from customer";
                     ResultSet rs = c.s.executeQuery(displayCustomersql);
                     table.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (Exception e) {
@@ -101,11 +101,11 @@ public class CustomerInfo extends JFrame {
         btnLoadData.setForeground(Color.WHITE);
         contentPane.add(btnLoadData);
 
-        lblId = new JLabel("ID");
+        lblId = new JLabel("Type Card");
         lblId.setBounds(31, 11, 46, 14);
         contentPane.add(lblId);
 
-        JLabel l1 = new JLabel("Number");
+        JLabel l1 = new JLabel("Cccd");
         l1.setBounds(150, 11, 46, 14);
         contentPane.add(l1);
 

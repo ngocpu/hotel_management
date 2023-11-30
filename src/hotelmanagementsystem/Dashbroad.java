@@ -24,17 +24,17 @@ public class Dashbroad extends JFrame {
         setForeground(Color.CYAN);
         setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/img_baclground.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(1950, 1000, Image.SCALE_DEFAULT);
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/das1.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(1200, 1000, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel NewLabel = new JLabel(i3);
-        NewLabel.setBounds(0, 0, 1950, 1000);
+        NewLabel.setBounds(0, 0, 1200, 1000);
         add(NewLabel);
 
-        JLabel AirlineManagementSystem = new JLabel("THE TAJ GROUP WELCOMES YOU");
+        JLabel AirlineManagementSystem = new JLabel("HOME HOTEL ");
         AirlineManagementSystem.setForeground(Color.WHITE);
-        AirlineManagementSystem.setFont(new Font("Tahoma", Font.PLAIN, 46));
-        AirlineManagementSystem.setBounds(600, 60, 1000, 85);
+        AirlineManagementSystem.setFont(new Font("Baloo Chettan", Font.BOLD, 46));
+        AirlineManagementSystem.setBounds(450, 60, 850, 85);
         NewLabel.add(AirlineManagementSystem);
 
         JMenuBar menuBar = new JMenuBar();
@@ -93,7 +93,8 @@ public class Dashbroad extends JFrame {
             }
         });
 
-        setSize(1950, 1090);
+        setSize(1200, 1050);
+        setLocationRelativeTo(null);
         setVisible(true);
         getContentPane().setBackground(Color.WHITE);
     }
